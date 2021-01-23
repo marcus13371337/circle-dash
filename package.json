@@ -1,0 +1,12 @@
+{
+  "name": "circleci-cli-dashboard",
+  "version": "1.0.0",
+  "description": "A cli-based dashboard for your circle-ci pipelines",
+  "main": "build/index.js",
+  "repository": "git@github.com:marcus13371337/circleci-cli-dashboard.git",
+  "author": "Marcus Ahlberg <m@rcusahlberg.se>",
+  "license": "MIT",
+  "dependencies": {
+    "listr2": "^3.3.0"
+  }
+}
