@@ -1,14 +1,18 @@
 {
   "name": "circle-dash",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A cli-based dashboard for circle-ci",
   "repository": "git@github.com:marcus13371337/circle-dash.git",
   "author": "Marcus Ahlberg <m@rcusahlberg.se>",
   "license": "MIT",
   "bin": "./build/cli.js",
+  "files": [
+    "build"
+  ],
   "scripts": {
     "dev": "pastel dev",
-    "build": "pastel build"
+    "build": "pastel build",
+    "prepare": "pastel build"
   },
   "dependencies": {
     "axios": "^0.21.1",
