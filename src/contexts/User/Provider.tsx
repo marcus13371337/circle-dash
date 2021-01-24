@@ -1,8 +1,7 @@
-import { User } from "circle-client";
-import React, { createContext, useCallback } from "react";
-import { config } from "../../config";
-import { useAsyncSource } from "../../hooks/useAsyncSource";
-import { useCircleCiClient } from "../CircleCiClient/useCircleCiClient";
+import { User } from 'circle-client';
+import React, { createContext, useCallback } from 'react';
+import { useAsyncSource } from '../../hooks/useAsyncSource';
+import { useCircleCiClient } from '../CircleCiClient/useCircleCiClient';
 
 export interface UserContextType {
   isFetching: boolean;
@@ -20,7 +19,7 @@ export const Provider: React.FC = ({ children }) => {
   const { client } = useCircleCiClient();
   const fetchUser = useCallback(async () => {
     return await client.getMe();
-  }, []);
+  }, [client]);
 
   const { data, isFetching, hasErrors } = useAsyncSource(fetchUser);
 

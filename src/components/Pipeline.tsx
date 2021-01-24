@@ -1,11 +1,11 @@
-import { Pipeline as PipelineType, Workflow } from "circle-client";
-import { Box, Spacer, Text } from "ink";
-import React, { useCallback, useEffect } from "react";
-import { useCircleCiClient } from "../contexts/CircleCiClient/useCircleCiClient";
-import { useAsyncSource } from "../hooks/useAsyncSource";
-import { Status } from "./Status";
-import moment from "moment";
-import Spinner from "ink-spinner";
+import { Pipeline as PipelineType, Workflow } from 'circle-client';
+import { Box, Spacer, Text } from 'ink';
+import React, { useCallback, useEffect } from 'react';
+import { useCircleCiClient } from '../contexts/CircleCiClient/useCircleCiClient';
+import { useAsyncSource } from '../hooks/useAsyncSource';
+import { Status } from './Status';
+import moment from 'moment';
+import Spinner from 'ink-spinner';
 
 interface Props {
   pipeline: PipelineType;
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const getProjectName = (pipeline: PipelineType) => {
-  const parts = pipeline.project_slug.split("/");
+  const parts = pipeline.project_slug.split('/');
   const name = parts[parts.length - 1];
 
   return name;
@@ -27,7 +27,7 @@ const parseSubject = (subject: string | undefined) => {
 };
 
 const isRunning = (workflow: Workflow) => {
-  return ["running", "not_run", "on_hold", "failing"].includes(workflow.status);
+  return ['running', 'not_run', 'on_hold', 'failing'].includes(workflow.status);
 };
 
 export const Header: React.FC = () => {
@@ -130,7 +130,7 @@ export const Pipeline: React.FC<Props> = ({
       <Box width="14%">
         {firstWorkflow && (
           <Text wrap="truncate-end" inverse={inverse}>
-            {firstWorkflow.name} {(workflows || []).length > 1 ? "(+)" : null}
+            {firstWorkflow.name} {(workflows || []).length > 1 ? '(+)' : null}
           </Text>
         )}
       </Box>
@@ -144,11 +144,11 @@ export const Pipeline: React.FC<Props> = ({
           {pipeline.vcs && (
             <>
               <Text bold wrap="truncate-end" inverse={inverse}>
-                {pipeline.vcs.tag || pipeline.vcs.branch} -{" "}
+                {pipeline.vcs.tag || pipeline.vcs.branch} -{' '}
               </Text>
               <Box>
                 <Text bold inverse={inverse}>
-                  {getCommitHash(pipeline.vcs.revision)}{" "}
+                  {getCommitHash(pipeline.vcs.revision)}{' '}
                 </Text>
                 <Text wrap="truncate-end" inverse={inverse}>
                   {parseSubject(pipeline.vcs.commit?.subject)}

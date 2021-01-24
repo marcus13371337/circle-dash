@@ -1,16 +1,16 @@
-import { Job as JobType } from "circle-client";
-import { Box, Text, useInput } from "ink";
-import React, { useCallback, useEffect, useState } from "react";
-import { useCircleCiClient } from "../contexts/CircleCiClient/useCircleCiClient";
-import { useAsyncSource } from "../hooks/useAsyncSource";
-import { Header as JobHeader, Job } from "./Job";
-import Spinner from "ink-spinner";
-import { BuildStep, GitType } from "circleci-api";
-import { Header as StepHeader, Step } from "./Step";
-import { useKeyboardSelection } from "../hooks/useKeyboardSelection";
-import { StepDetails } from "./StepDetails";
-import { useKeyboardNavigation } from "../contexts/KeybboardNavigation/useKeyboardNavigation";
-import { Header } from "./Header";
+import { Job as JobType } from 'circle-client';
+import { Box, Text } from 'ink';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useCircleCiClient } from '../contexts/CircleCiClient/useCircleCiClient';
+import { useAsyncSource } from '../hooks/useAsyncSource';
+import { Header as JobHeader, Job } from './Job';
+import Spinner from 'ink-spinner';
+import { BuildStep, GitType } from 'circleci-api';
+import { Header as StepHeader, Step } from './Step';
+import { useKeyboardSelection } from '../hooks/useKeyboardSelection';
+import { StepDetails } from './StepDetails';
+import { useKeyboardNavigation } from '../contexts/KeybboardNavigation/useKeyboardNavigation';
+import { Header } from './Header';
 
 interface Props {
   job: JobType;
@@ -21,10 +21,10 @@ export const JobDetails: React.FC<Props> = ({ job }) => {
 
   const fetchDetails = useCallback(async () => {
     if (!job.job_number) {
-      throw new Error("Invalid job number");
+      throw new Error('Invalid job number');
     }
 
-    const [type, owner, repo] = job.project_slug.split("/");
+    const [type, owner, repo] = job.project_slug.split('/');
 
     return await legacyClient.build(job.job_number, {
       vcs: {
@@ -33,7 +33,7 @@ export const JobDetails: React.FC<Props> = ({ job }) => {
         repo,
       },
     });
-  }, [legacyClient, job.job_number]);
+  }, [legacyClient, job.job_number, job.project_slug]);
 
   const { data, isFetching, hasErrors, refresh } = useAsyncSource(fetchDetails);
 

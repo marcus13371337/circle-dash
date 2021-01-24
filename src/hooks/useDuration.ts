@@ -1,10 +1,10 @@
-import moment from "moment";
-import { useEffect, useState } from "react";
+import moment from 'moment';
+import { useEffect, useState } from 'react';
 
 const formatDuration = (duration: moment.Duration) => {
   let parts: string[] = [];
 
-  if (!duration || duration.toISOString() === "P0D") return;
+  if (!duration || duration.toISOString() === 'P0D') return;
 
   if (duration.years() >= 1) {
     const years = Math.floor(duration.years());
@@ -36,9 +36,9 @@ const formatDuration = (duration: moment.Duration) => {
     parts.push(`${seconds}s`);
   }
 
-  const final = parts.join(" ");
+  const final = parts.join(' ');
 
-  return final === "" ? "0s" : final;
+  return final === '' ? '0s' : final;
 };
 
 const calculateDuration = (from: string, to?: string) => {

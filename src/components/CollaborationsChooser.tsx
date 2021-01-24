@@ -1,9 +1,9 @@
-import { Collaboration } from "circle-client";
-import React from "react";
-import { useCollaborations } from "../contexts/Collaborations/useCollaborations";
-import Spinner from "ink-spinner";
-import { Box, Newline, Text } from "ink";
-import SelectInput, { Item } from "ink-select-input";
+import { Collaboration } from 'circle-client';
+import React from 'react';
+import { useCollaborations } from '../contexts/Collaborations/useCollaborations';
+import Spinner from 'ink-spinner';
+import { Box, Text } from 'ink';
+import SelectInput from 'ink-select-input';
 
 interface Props {
   onSelect: (collaboration: Collaboration) => void;
@@ -18,7 +18,7 @@ export const CollaborationsChooser: React.FC<Props> = ({ onSelect }) => {
 
   if (hasErrors) {
     throw new Error(
-      "Couldnt fetch collaborations. Are you sure that you have provided a valid access token?"
+      'Couldnt fetch collaborations. Are you sure that you have provided a valid access token?'
     );
   }
 

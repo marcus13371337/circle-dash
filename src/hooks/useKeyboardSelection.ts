@@ -1,5 +1,5 @@
-import { useInput } from "ink";
-import { useEffect, useState } from "react";
+import { useInput } from 'ink';
+import { useEffect, useState } from 'react';
 
 export const useKeyboardSelection = <T extends { id: string | number }>(
   items: T[],
@@ -21,7 +21,7 @@ export const useKeyboardSelection = <T extends { id: string | number }>(
         }
       }
     }
-  }, [items, selected, preselect]);
+  }, [items, selected, preselect, reversed]);
 
   useInput((input, key) => {
     const currentIndex = items.findIndex((item) => item.id === selected?.id);

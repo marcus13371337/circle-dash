@@ -1,8 +1,8 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from 'react';
 import {
   KeyboardNavigationConfig,
   KeyboardNavigationContext,
-} from "./Provider";
+} from './Provider';
 
 export const useKeyboardNavigation = (
   config: KeyboardNavigationConfig,

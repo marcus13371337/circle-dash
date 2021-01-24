@@ -1,10 +1,10 @@
-import { BuildStep } from "circleci-api";
-import { WorkflowStatus as WorkflowStatusType } from "circle-client";
-import { Box, Spacer, Text } from "ink";
-import moment from "moment";
-import React from "react";
-import { Status } from "./Status";
-import { useDuration } from "../hooks/useDuration";
+import { BuildStep } from 'circleci-api';
+import { WorkflowStatus as WorkflowStatusType } from 'circle-client';
+import { Box, Spacer, Text } from 'ink';
+import moment from 'moment';
+import React from 'react';
+import { Status } from './Status';
+import { useDuration } from '../hooks/useDuration';
 
 interface Props {
   step: BuildStep;

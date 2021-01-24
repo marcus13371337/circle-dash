@@ -2,12 +2,12 @@ import {
   Job as JobType,
   Workflow,
   WorkflowStatus as WorkflowStatusType,
-} from "circle-client";
-import { Box, Spacer, Text } from "ink";
-import React from "react";
-import { Status } from "./Status";
-import moment from "moment";
-import { useDuration } from "../hooks/useDuration";
+} from 'circle-client';
+import { Box, Spacer, Text } from 'ink';
+import React from 'react';
+import { Status } from './Status';
+import moment from 'moment';
+import { useDuration } from '../hooks/useDuration';
 
 interface Props {
   job: JobType;

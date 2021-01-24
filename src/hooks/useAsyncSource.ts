@@ -1,22 +1,22 @@
-import { useCallback, useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from 'react';
 
 interface Reset {
-  type: "RESET";
+  type: 'RESET';
 }
 
 interface FetchStarted {
-  type: "FETCH_STARTED";
+  type: 'FETCH_STARTED';
 }
 
 interface FetchSuccess<T> {
-  type: "FETCH_SUCCESS";
+  type: 'FETCH_SUCCESS';
   payload: {
     data: T;
   };
 }
 
 interface FetchFailed {
-  type: "FETCH_FAILED";
+  type: 'FETCH_FAILED';
   payload: {
     error: unknown;
   };
@@ -42,14 +42,14 @@ const createReducer = <T>() => (
   action: Action<T>
 ): State<T> => {
   switch (action.type) {
-    case "RESET":
+    case 'RESET':
       return state.isInitial ? state : initalState;
-    case "FETCH_STARTED":
+    case 'FETCH_STARTED':
       return {
         ...state,
         isFetching: true,
       };
-    case "FETCH_FAILED":
+    case 'FETCH_FAILED':
       return {
         ...state,
         isFetching: false,
@@ -57,7 +57,7 @@ const createReducer = <T>() => (
         error: action.payload.error,
       };
 
-    case "FETCH_SUCCESS":
+    case 'FETCH_SUCCESS':
       return {
         ...state,
         isFetching: false,
@@ -80,20 +80,20 @@ export const useAsyncSource = <T>(fetchData: () => Promise<T>) => {
 
   const fetch = useCallback(async () => {
     dispatch({
-      type: "FETCH_STARTED",
+      type: 'FETCH_STARTED',
     });
 
     try {
       const data = await fetchData();
       dispatch({
-        type: "FETCH_SUCCESS",
+        type: 'FETCH_SUCCESS',
         payload: {
           data,
         },
       });
     } catch (error) {
       dispatch({
-        type: "FETCH_FAILED",
+        type: 'FETCH_FAILED',
         payload: {
           error,
         },
@@ -109,7 +109,7 @@ export const useAsyncSource = <T>(fetchData: () => Promise<T>) => {
 
   useEffect(() => {
     dispatch({
-      type: "RESET",
+      type: 'RESET',
     });
   }, [fetch]);
 

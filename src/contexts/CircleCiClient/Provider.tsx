@@ -1,7 +1,7 @@
-import CircleCI from "circle-client";
-import { createContext } from "react";
-import { config } from "../../config";
-import { CircleCI as LegacyCircleCI } from "circleci-api";
+import CircleCI from 'circle-client';
+import { createContext } from 'react';
+import { config } from '../../config';
+import { CircleCI as LegacyCircleCI } from 'circleci-api';
 
 export interface CircleCiClientContextType {
   client: CircleCI;
@@ -9,7 +9,7 @@ export interface CircleCiClientContextType {
 }
 
 if (!config.accessToken) {
-  throw new Error("Access token not configured");
+  throw new Error('Access token not configured');
 }
 
 const client = new CircleCI(config.accessToken);

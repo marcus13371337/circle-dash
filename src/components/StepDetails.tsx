@@ -1,13 +1,13 @@
-import axios from "axios";
-import { BuildStep } from "circleci-api";
-import { Box, Newline, Text } from "ink";
-import React, { useEffect, useMemo } from "react";
-import { useCallback } from "react";
-import { useAsyncSource } from "../hooks/useAsyncSource";
-import { Header as StepHeader, Step } from "./Step";
-import Spinner from "ink-spinner";
-import { useKeyboardSelection } from "../hooks/useKeyboardSelection";
-import { Header } from "./Header";
+import axios from 'axios';
+import { BuildStep } from 'circleci-api';
+import { Box, Text } from 'ink';
+import React, { useEffect, useMemo } from 'react';
+import { useCallback } from 'react';
+import { useAsyncSource } from '../hooks/useAsyncSource';
+import { Header as StepHeader, Step } from './Step';
+import Spinner from 'ink-spinner';
+import { useKeyboardSelection } from '../hooks/useKeyboardSelection';
+import { Header } from './Header';
 
 interface Props {
   step: BuildStep;
@@ -21,21 +21,22 @@ interface Output {
 
 const removeAnsi = (str: string) =>
   str.replace(
+    // eslint-disable-next-line no-control-regex
     /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g,
-    ""
+    ''
   );
 
 export const StepDetails: React.FC<Props> = ({ step }) => {
   const firstAction = step.actions.length > 0 ? step.actions[0] : null;
 
   const fetchOutput = useCallback(async () => {
-    if (!firstAction || !firstAction.output_url) {
-      throw new Error("Not a valid step");
+    if (!firstAction?.output_url) {
+      throw new Error('Not a valid step');
     }
     const response = await axios.get<Output[]>(firstAction.output_url);
 
     return response.data;
-  }, []);
+  }, [firstAction?.output_url]);
 
   const { data, isFetching, hasErrors, refresh } = useAsyncSource(fetchOutput);
 
@@ -45,7 +46,7 @@ export const StepDetails: React.FC<Props> = ({ step }) => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [refresh]);
 
   const firstEntry = data && data.length > 0 ? data[0] : null;
 
@@ -74,26 +75,26 @@ export const StepDetails: React.FC<Props> = ({ step }) => {
   const visibleLines = lines.slice(visibleStart, visibleStart + NUMBER_OF_ROWS);
 
   return (
-    <Box flexDirection="column" flexGrow={1}>
+    <>
       <Header title="Step">
         <StepHeader />
         <Step step={step} />
       </Header>
-      <Box
-        borderStyle="single"
-        flexGrow={1}
-        flexDirection="column"
-        justifyContent="flex-end"
-        height={NUMBER_OF_ROWS}
-      >
-        {isFetching && !data && <Spinner />}
+      {isFetching && !data && <Spinner />}
+      {hasErrors && <Text>Couldn't get output</Text>}
+      <Box borderStyle="single" flexDirection="column" flexGrow={1}>
         {visibleLines.map((entry) => (
-          <Text key={entry.id} color="white" wrap="truncate-end">
+          <Text key={entry.id} color="white">
             {entry.message}
           </Text>
         ))}
-        {hasErrors && <Text>Couldn't get output</Text>}
       </Box>
-    </Box>
+      {lines.length > 0 && (
+        <Text bold>
+          {Math.max(visibleStart + NUMBER_OF_ROWS - 1, lines.length)} /{' '}
+          {lines.length}
+        </Text>
+      )}
+    </>
   );
 };

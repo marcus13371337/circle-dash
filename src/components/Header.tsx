@@ -1,5 +1,5 @@
-import { Box, Text } from "ink";
-import React from "react";
+import { Box, Text } from 'ink';
+import React from 'react';
 
 interface Props {
   title: string;
@@ -7,7 +7,7 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ title, children }) => {
   return (
-    <Box padding={1} flexDirection="column" alignItems="center">
+    <Box flexDirection="column" alignItems="center">
       <Text color="white" underline>
         {title.toUpperCase()}
       </Text>

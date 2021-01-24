@@ -1,13 +1,13 @@
-import { Collaboration, Pipeline as PipelineType } from "circle-client";
-import { Box, Text } from "ink";
-import React, { useCallback, useEffect, useState } from "react";
-import { useCircleCiClient } from "../contexts/CircleCiClient/useCircleCiClient";
-import { getOrgSlug } from "../contexts/Collaborations/getOrgSlug";
-import { useAsyncSource } from "../hooks/useAsyncSource";
-import { Header, Pipeline } from "./Pipeline";
-import Spinner from "ink-spinner";
-import { useKeyboardSelection } from "../hooks/useKeyboardSelection";
-import { useKeyboardNavigation } from "../contexts/KeybboardNavigation/useKeyboardNavigation";
+import { Collaboration, Pipeline as PipelineType } from 'circle-client';
+import { Box, Text } from 'ink';
+import React, { useCallback, useEffect } from 'react';
+import { useCircleCiClient } from '../contexts/CircleCiClient/useCircleCiClient';
+import { getOrgSlug } from '../contexts/Collaborations/getOrgSlug';
+import { useAsyncSource } from '../hooks/useAsyncSource';
+import { Header, Pipeline } from './Pipeline';
+import Spinner from 'ink-spinner';
+import { useKeyboardSelection } from '../hooks/useKeyboardSelection';
+import { useKeyboardNavigation } from '../contexts/KeybboardNavigation/useKeyboardNavigation';
 
 interface Props {
   collaboration: Collaboration;

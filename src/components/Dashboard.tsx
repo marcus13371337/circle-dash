@@ -1,24 +1,24 @@
-import { Collaboration, Pipeline } from "circle-client";
-import { Box, Text } from "ink";
-import React from "react";
-import { useKeyboardSelection } from "../hooks/useKeyboardSelection";
-import { PipelineList } from "./PipelineList";
+import { Collaboration, Pipeline } from 'circle-client';
+import { Box, Text } from 'ink';
+import React from 'react';
+import { useKeyboardSelection } from '../hooks/useKeyboardSelection';
+import { PipelineList } from './PipelineList';
 
 interface Props {
   collaboration: Collaboration;
   onPipelineSelect: (pipeline: Pipeline) => void;
 }
 
-type View = "all" | "mine";
+type View = 'all' | 'mine';
 
 const VIEWS: { id: View; label: string }[] = [
   {
-    id: "all",
-    label: "All Pipelines",
+    id: 'all',
+    label: 'All Pipelines',
   },
   {
-    id: "mine",
-    label: "My Pipelines",
+    id: 'mine',
+    label: 'My Pipelines',
   },
 ];
 
@@ -51,7 +51,7 @@ export const Dashboard: React.FC<Props> = ({
       </Box>
       <PipelineList
         collaboration={collaboration}
-        onlyMine={selected?.id === "mine"}
+        onlyMine={selected?.id === 'mine'}
         onSelect={onPipelineSelect}
       />
     </Box>

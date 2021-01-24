@@ -1,4 +1,4 @@
-import { useInput, Key } from "ink";
+import { useInput } from 'ink';
 import React, {
   createContext,
   useCallback,
@@ -6,12 +6,12 @@ import React, {
   useMemo,
   useRef,
   useState,
-} from "react";
+} from 'react';
 
 const createId = (length: number) => {
-  let result = "";
+  let result = '';
   const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   const charactersLength = characters.length;
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -31,7 +31,7 @@ interface KeyboardNavigationContextValue {
 
 export const KeyboardNavigationContext = createContext<KeyboardNavigationContextValue>(
   {
-    subscribe: () => "0",
+    subscribe: () => '0',
     updateConfig: () => {},
     unsubscribe: () => {},
   }
@@ -54,15 +54,17 @@ export const Provider: React.FC = ({ children }) => {
     const currentQueue = latestQueue.current;
     let i = currentQueue.length - 1;
     let handler: KeyHandler | undefined = undefined;
+    const pressedKeys = Object.keys(keyPress).filter((key) => keyPress[key]);
+
     while (i >= 0 && !handler) {
       const highestPrioHandlers = currentQueue[i];
-      Object.keys(keyPress)
-        .filter((key) => keyPress[key])
-        .forEach((pressedKey: keyof Key) => {
-          if (!handler) {
-            handler = highestPrioHandlers.config[pressedKey];
-          }
-        });
+
+      for (const pressedKey of pressedKeys) {
+        if (!handler) {
+          handler = highestPrioHandlers.config[pressedKey];
+        }
+      }
+
       i--;
     }
 

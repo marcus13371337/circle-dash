@@ -1,7 +1,7 @@
-import { Collaboration } from "circle-client";
-import React, { createContext, useCallback } from "react";
-import { useAsyncSource } from "../../hooks/useAsyncSource";
-import { useCircleCiClient } from "../CircleCiClient/useCircleCiClient";
+import { Collaboration } from 'circle-client';
+import React, { createContext, useCallback } from 'react';
+import { useAsyncSource } from '../../hooks/useAsyncSource';
+import { useCircleCiClient } from '../CircleCiClient/useCircleCiClient';
 
 export interface OrganizationContextProvider {
   isFetching: boolean;

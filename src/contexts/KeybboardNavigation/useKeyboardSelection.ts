@@ -1,6 +1,6 @@
-import { useMemo, useState } from "react";
-import { KeyboardNavigationConfig } from "./Provider";
-import { useKeyboardNavigation } from "./useKeyboardNavigation";
+import { useMemo, useState } from 'react';
+import { KeyboardNavigationConfig } from './Provider';
+import { useKeyboardNavigation } from './useKeyboardNavigation';
 
 interface KeyboardSelectionParams<T> {
   items: T[];
