@@ -1,5 +1,5 @@
 # Circle-Dash
-The circle-ci dashboard (inoffical) in your your terminal.
+The circle-ci dashboard (unoffical) in your your terminal.
 
 ## Installation
 1. Install the package
