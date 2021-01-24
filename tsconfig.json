@@ -11,5 +11,5 @@
     "strictNullChecks": true,
     "jsx": "react"
   },
-  "include": ["./src/**/*", "./scripts/**/*"]
+  "include": ["./src/**/*", "./commands/**/*"]
 }

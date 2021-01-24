@@ -7,7 +7,9 @@ export const UserInfo: React.FC = () => {
   const { user, hasErrors, isFetching } = useUser();
 
   if (hasErrors) {
-    throw new Error("Error while getting user");
+    throw new Error(
+      "Error while getting user. Are you sure that you have provided a valid access token?"
+    );
   }
 
   if (isFetching) {

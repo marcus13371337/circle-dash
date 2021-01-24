@@ -1,11 +1,12 @@
 import { Job, Pipeline as PipelineType, Workflow } from "circle-client";
 import { Box } from "ink";
 import React, { useState } from "react";
-import { Header, Pipeline } from "./Pipeline";
+import { Header as PipelineHeader, Pipeline } from "./Pipeline";
 import Spinner from "ink-spinner";
 import { WorkflowDetails } from "./WorkflowDetails";
 import { JobDetails } from "./JobDetails";
 import { useKeyboardNavigation } from "../contexts/KeybboardNavigation/useKeyboardNavigation";
+import { Header } from "./Header";
 
 interface Props {
   pipeline: PipelineType;
@@ -26,10 +27,10 @@ export const PipelineDetails: React.FC<Props> = ({ pipeline }) => {
 
   return (
     <Box borderStyle="single" flexDirection="column" flexGrow={1}>
-      <Box padding={1} flexDirection="column">
-        <Header />
+      <Header title="Pipeline">
+        <PipelineHeader />
         <Pipeline pipeline={pipeline} onWorkflows={setWorkflows} />
-      </Box>
+      </Header>
       {!workflows && <Spinner />}
       {!selectedJob &&
         workflows &&

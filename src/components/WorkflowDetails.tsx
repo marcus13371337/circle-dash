@@ -32,7 +32,7 @@ export const WorkflowDetails: React.FC<Props> = ({ workflow, onJobSelect }) => {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [refresh]);
 
   const selectedJob = useKeyboardSelection(jobs || []);
 

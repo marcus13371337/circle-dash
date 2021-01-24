@@ -10,6 +10,7 @@ import { Header as StepHeader, Step } from "./Step";
 import { useKeyboardSelection } from "../hooks/useKeyboardSelection";
 import { StepDetails } from "./StepDetails";
 import { useKeyboardNavigation } from "../contexts/KeybboardNavigation/useKeyboardNavigation";
+import { Header } from "./Header";
 
 interface Props {
   job: JobType;
@@ -72,10 +73,10 @@ export const JobDetails: React.FC<Props> = ({ job }) => {
 
   return (
     <Box flexDirection="column" flexGrow={1}>
-      <Box borderStyle="single" padding={1} flexDirection="column">
+      <Header title="Job">
         <JobHeader />
         <Job job={job} />
-      </Box>
+      </Header>
       {selectedStep && <StepDetails step={selectedStep} />}
       {!selectedStep && (
         <Box flexDirection="column">

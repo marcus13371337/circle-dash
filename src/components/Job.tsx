@@ -5,7 +5,7 @@ import {
 } from "circle-client";
 import { Box, Spacer, Text } from "ink";
 import React from "react";
-import { WorkflowStatus } from "./WorkflowStatus";
+import { Status } from "./Status";
 import moment from "moment";
 import { useDuration } from "../hooks/useDuration";
 
@@ -26,7 +26,7 @@ export const Job: React.FC<Props> = ({ job, inverse }) => {
         </Text>
       </Box>
       <Box width="20%">
-        <WorkflowStatus status={job.status as WorkflowStatusType} />
+        <Status status={job.status as WorkflowStatusType} />
       </Box>
       <Box width="25%">
         <Text color="gray" inverse={inverse}>

@@ -3,9 +3,9 @@ import { Box, Spacer, Text } from "ink";
 import React, { useCallback, useEffect } from "react";
 import { useCircleCiClient } from "../contexts/CircleCiClient/useCircleCiClient";
 import { useAsyncSource } from "../hooks/useAsyncSource";
-import { WorkflowStatus } from "./WorkflowStatus";
-import Spinner from "ink-spinner";
+import { Status } from "./Status";
 import moment from "moment";
+import Spinner from "ink-spinner";
 
 interface Props {
   pipeline: PipelineType;
@@ -125,7 +125,7 @@ export const Pipeline: React.FC<Props> = ({
         </Text>
       </Box>
       <Box width="8%">
-        {firstWorkflow && <WorkflowStatus status={firstWorkflow.status} />}
+        {firstWorkflow && <Status status={firstWorkflow.status} />}
       </Box>
       <Box width="14%">
         {firstWorkflow && (

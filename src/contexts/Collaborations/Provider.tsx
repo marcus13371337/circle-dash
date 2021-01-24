@@ -1,4 +1,4 @@
-import CircleCI, { Collaboration } from "circle-client";
+import { Collaboration } from "circle-client";
 import React, { createContext, useCallback } from "react";
 import { useAsyncSource } from "../../hooks/useAsyncSource";
 import { useCircleCiClient } from "../CircleCiClient/useCircleCiClient";

@@ -17,7 +17,9 @@ export const CollaborationsChooser: React.FC<Props> = ({ onSelect }) => {
   }
 
   if (hasErrors) {
-    throw new Error("Couldnt fetch collaborations");
+    throw new Error(
+      "Couldnt fetch collaborations. Are you sure that you have provided a valid access token?"
+    );
   }
 
   const items = (collaborations || []).map((collaboration) => ({

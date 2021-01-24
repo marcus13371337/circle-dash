@@ -4,10 +4,10 @@ import { Box, Newline, Text } from "ink";
 import React, { useEffect, useMemo } from "react";
 import { useCallback } from "react";
 import { useAsyncSource } from "../hooks/useAsyncSource";
-import { Header, Step } from "./Step";
+import { Header as StepHeader, Step } from "./Step";
 import Spinner from "ink-spinner";
 import { useKeyboardSelection } from "../hooks/useKeyboardSelection";
-import stripAnsi from "strip-ansi";
+import { Header } from "./Header";
 
 interface Props {
   step: BuildStep;
@@ -75,10 +75,10 @@ export const StepDetails: React.FC<Props> = ({ step }) => {
 
   return (
     <Box flexDirection="column" flexGrow={1}>
-      <Box flexDirection="column" borderStyle="single">
-        <Header />
+      <Header title="Step">
+        <StepHeader />
         <Step step={step} />
-      </Box>
+      </Header>
       <Box
         borderStyle="single"
         flexGrow={1}

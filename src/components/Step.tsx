@@ -3,7 +3,7 @@ import { WorkflowStatus as WorkflowStatusType } from "circle-client";
 import { Box, Spacer, Text } from "ink";
 import moment from "moment";
 import React from "react";
-import { WorkflowStatus } from "./WorkflowStatus";
+import { Status } from "./Status";
 import { useDuration } from "../hooks/useDuration";
 
 interface Props {
@@ -23,7 +23,7 @@ export const Step: React.FC<Props> = ({ step, inverse }) => {
     <Box alignItems="center">
       <Box width="10%">
         {firstAction && (
-          <WorkflowStatus status={firstAction.status as WorkflowStatusType} />
+          <Status status={firstAction.status as WorkflowStatusType} />
         )}
       </Box>
       <Box width="80%">

@@ -1,5 +1,5 @@
 import { Collaboration, Pipeline as PipelineType } from "circle-client";
-import { Box, Text, useInput } from "ink";
+import { Box, Text } from "ink";
 import React, { useCallback, useEffect, useState } from "react";
 import { useCircleCiClient } from "../contexts/CircleCiClient/useCircleCiClient";
 import { getOrgSlug } from "../contexts/Collaborations/getOrgSlug";

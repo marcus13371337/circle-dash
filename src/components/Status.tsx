@@ -3,12 +3,14 @@ import { Box, Text } from "ink";
 import Spinner from "ink-spinner";
 import React from "react";
 
+type Status = WorkflowStatusType | "blocked" | "queued";
+
 interface Props {
-  status: WorkflowStatusType;
+  status: Status;
   isCompact?: boolean;
 }
 
-const getIcon = (status: WorkflowStatusType) => {
+const getIcon = (status: Status) => {
   switch (status) {
     case "failed":
     case "failing":
@@ -20,6 +22,8 @@ const getIcon = (status: WorkflowStatusType) => {
       return <Spinner />;
     case "not_run":
     case "on_hold":
+    case "queued":
+    case "blocked":
       return "⏳";
     case "canceled":
     case "unauthorized":
@@ -29,7 +33,7 @@ const getIcon = (status: WorkflowStatusType) => {
   }
 };
 
-const getColors = (status: WorkflowStatusType | "blocked") => {
+const getColors = (status: Status) => {
   switch (status) {
     case "failed":
     case "failing":
@@ -51,6 +55,7 @@ const getColors = (status: WorkflowStatusType | "blocked") => {
     case "not_run":
     case "on_hold":
     case "blocked":
+    case "queued":
       return {
         backgroundColor: "gray",
         color: "white",
@@ -66,14 +71,11 @@ const getColors = (status: WorkflowStatusType | "blocked") => {
   }
 };
 
-const getLabel = (status: WorkflowStatusType) => {
+const getLabel = (status: Status) => {
   return status.charAt(0).toUpperCase() + status.substr(1);
 };
 
-export const WorkflowStatus: React.FC<Props> = ({
-  status,
-  isCompact = false,
-}) => {
+export const Status: React.FC<Props> = ({ status, isCompact = false }) => {
   return (
     <Text {...getColors(status)}>
       {getIcon(status)} {!isCompact && getLabel(status)}
