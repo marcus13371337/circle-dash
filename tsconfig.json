@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "typeRoots": ["./@types", "./node_modules/@types"],
+    "types": ["node"],
+    "strictNullChecks": true,
+    "jsx": "react"
+  },
+  "include": ["./src/**/*", "./scripts/**/*"]
+}
