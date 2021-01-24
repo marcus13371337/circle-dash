@@ -6,10 +6,6 @@ The circle-ci dashboard (unoffical) in your your terminal.
 ```
 npm install -g circle-dash
 ```
-or
-```
-yarn global add circle-dash
-```
 
 2. Configure your user by running
 ```
