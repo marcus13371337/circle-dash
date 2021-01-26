@@ -25,10 +25,10 @@ const getIcon = (status: StatusType) => {
     case 'on_hold':
     case 'queued':
     case 'blocked':
-      return '⏳';
+      return '.';
     case 'canceled':
     case 'unauthorized':
-      return '❌';
+      return 'X';
     default:
       return null;
   }

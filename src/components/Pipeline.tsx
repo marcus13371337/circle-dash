@@ -89,7 +89,7 @@ export const Pipeline: React.FC<Props> = ({
   );
 
   useEffect(() => {
-    if (workflows) {
+    if (workflows && workflows.length > 0) {
       const firstWorkflow = workflows[0];
 
       if (isRunning(firstWorkflow)) {
@@ -102,7 +102,7 @@ export const Pipeline: React.FC<Props> = ({
     }
   }, [workflows, refresh]);
 
-  const firstWorkflow = workflows ? workflows[0] : null;
+  const firstWorkflow = workflows && workflows.length > 0 ? workflows[0] : null;
 
   useEffect(() => {
     onWorkflows && onWorkflows(workflows);

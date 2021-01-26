@@ -72,6 +72,9 @@ export const PipelineDetails: React.FC<Props> = ({ pipelineId }) => {
             />
           );
         })}
+      {!selectedJob && workflows && workflows.length === 0 && (
+        <Text>No workflows in this pipeline</Text>
+      )}
       {selectedJob && <JobDetails job={selectedJob} />}
     </Box>
   );

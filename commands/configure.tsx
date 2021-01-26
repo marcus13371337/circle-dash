@@ -13,7 +13,10 @@ const AccessTokenPrompt: React.FC = () => {
   const { exit } = useApp();
 
   const onSubmit = async () => {
-    await fse.writeFile(path.resolve('.env'), `ACCESS_TOKEN=${accessToken}`);
+    await fse.writeFile(
+      path.resolve(__dirname + '/../.env'),
+      `ACCESS_TOKEN=${accessToken}`
+    );
 
     setIsConfigured(true);
 
