@@ -1,14 +1,10 @@
 # Circle-Dash
-The circle-ci dashboard (unoffical) in your your terminal.
+The circle-ci dashboard (unoffical) in your terminal.
 
 ## Installation
 1. Install the package
 ```
 npm install -g circle-dash
-```
-or
-```
-yarn global add circle-dash
 ```
 
 2. Configure your user by running
