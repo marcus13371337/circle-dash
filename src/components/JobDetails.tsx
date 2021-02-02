@@ -46,7 +46,7 @@ export const JobDetails: React.FC<Props> = ({ job }) => {
   }, [refresh]);
 
   const stepCursor = useKeyboardSelection(
-    data?.steps.map((step) => ({ ...step, id: step.name })) || []
+    data?.steps.map((step, index) => ({ ...step, id: index })) || []
   );
 
   const [selectedStep, setSelectedStep] = useState<BuildStep | null>(null);
@@ -92,7 +92,7 @@ export const JobDetails: React.FC<Props> = ({ job }) => {
                 <Step
                   key={index}
                   step={step}
-                  inverse={stepCursor?.name === step.name}
+                  inverse={stepCursor?.id === index}
                 />
               );
             })}

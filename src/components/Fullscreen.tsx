@@ -17,15 +17,13 @@ export const FullScreen: React.FC = ({ children }) => {
     };
 
     process.stdout.on('resize', onResize);
-    process.stdout.write('\x1b[?1049h');
     return () => {
       process.stdout.off('resize', onResize);
-      process.stdout.write('\x1b[?1049l');
     };
   }, []);
 
   return (
-    <Box width={size.columns} height={size.rows} flexDirection="column">
+    <Box width={size.columns} height={size.rows - 1} flexDirection="column">
       {children}
     </Box>
   );
